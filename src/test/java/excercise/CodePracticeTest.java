@@ -23,7 +23,7 @@ class CodePracticeTest {
 	@Test
 	@DisplayName("DuplicateWords")
 	void testDuplicateWords() {
-		Map<String, Integer> valueMap = codePractice.duplicateWords2("mama rama kama mama mama");
+		Map<String, Integer> valueMap = codePractice.duplicateWords2("mama rama kama mama mama check");
 		String expectedKey = null;
 		Integer expectedValue = 0;
 		for(Map.Entry<String, Integer> entry: valueMap.entrySet()) {
