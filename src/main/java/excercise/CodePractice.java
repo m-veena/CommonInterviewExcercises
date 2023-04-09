@@ -377,7 +377,7 @@ public static void main(String[] args) {
 //	System.out.println(codePractice.palindrome(text));
 	//codePractice.findVowelsConsonantCounter(text);
 
-	//codePractice.swapElemInArray();
+	codePractice.swapElemInArray();
 	codePractice.maximumProductOfTwoArray();
 	
 	}
