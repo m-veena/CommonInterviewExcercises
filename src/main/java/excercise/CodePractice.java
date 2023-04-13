@@ -352,6 +352,28 @@ public void maximumProductOfTwoArray() {
 	}
 	 
 }
+//{1,1,1,2,2,3,3,3};
+public int[] removeDuplicates(int[] nums) {
+	
+if(nums.length == 0 || nums.length == 1)
+     return nums;
+	
+    int uniqueElem = 0;
+    int len = nums.length;
+    int[] otherNums = new int[len];
+    for(int i=0;i<len-1;i++) {
+       if(nums[i] != nums[i+1]) {
+           	otherNums[uniqueElem] = nums[i]; 
+           uniqueElem++;
+        }            
+    }
+    otherNums[uniqueElem] = nums[len-1];
+    for(int i =0;i<=uniqueElem;i++)
+        nums[i] = otherNums[i];
+        
+  return Arrays.copyOf(nums, uniqueElem+1);
+}
+
 public static void main(String[] args) {
 	CodePractice codePractice = new CodePractice();
 //	System.out.println(codePractice.duplicateWords2("the dog is the the dog dog"));
@@ -379,7 +401,10 @@ public static void main(String[] args) {
 
 	codePractice.swapElemInArray();
 	codePractice.maximumProductOfTwoArray();
-	
+	int[] nums = {1,1,1,2,2,3,3,3};
+	int[] expectedNums = codePractice.removeDuplicates(nums);
+	System.out.println("Array: "+Arrays.toString(expectedNums));
+
 	}
 
 

@@ -73,4 +73,12 @@ class CodePracticeTest {
 		assertEquals(true, "   ".isBlank(),"Blank string check with one white space");
 		assertEquals(true, "".isEmpty(),"Empty string check with one white space");
 	}
+	
+	@Test
+	void testRemoveDuplicates() {
+		int[] nums = {0,0,1,1,2,3,4,4,4,5};
+		int[] expectedNums = {0,1,2,3,4,5};
+		
+		assertArrayEquals(codePractice.removeDuplicates(nums),expectedNums,"Array passed");
+	}
 }
