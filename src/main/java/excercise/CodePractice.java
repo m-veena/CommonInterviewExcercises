@@ -1,6 +1,7 @@
 package excercise;
 
 import java.io.*;
+import java.math.BigInteger;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -374,6 +375,32 @@ if(nums.length == 0 || nums.length == 1)
   return Arrays.copyOf(nums, uniqueElem+1);
 }
 
+public int[] plusOne(int[] digits) {
+    int len = digits.length;   
+     if(digits[len-1] <9) {
+         digits[len-1] = digits[len-1]+1;  
+         return digits;
+     } else {
+         StringBuilder strValue = new StringBuilder();
+         for(int i =0;i<len;i++) {
+             strValue.append(digits[i]);                
+         }
+         System.out.println(strValue.toString());
+         BigInteger bigValue = new BigInteger(strValue.toString());
+
+         bigValue =bigValue.add(new BigInteger("1"));
+         String updatedValue = String.valueOf(bigValue);
+         char[] charArr = updatedValue.toCharArray();
+         int[] newArr = Arrays.copyOf(digits, charArr.length);
+         for(int j =0;j<charArr.length;j++) {
+           newArr[j] =  Character.getNumericValue(charArr[j]);
+         }
+         
+         return newArr;
+     }
+ }
+
+
 public static void main(String[] args) {
 	CodePractice codePractice = new CodePractice();
 //	System.out.println(codePractice.duplicateWords2("the dog is the the dog dog"));
@@ -404,6 +431,7 @@ public static void main(String[] args) {
 	int[] nums = {1,1,1,2,2,3,3,3};
 	int[] expectedNums = codePractice.removeDuplicates(nums);
 	System.out.println("Array: "+Arrays.toString(expectedNums));
+	System.out.println(Arrays.toString(codePractice.plusOne(new int[] {5,6,2,0,0,4,6,2,4,9})));
 
 	}
 
