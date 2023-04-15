@@ -134,8 +134,17 @@ public class CodePractice {
 		return true; 
 		String reverseString = new StringBuilder(value).reverse().toString();
 		return reverseString.equals(value); */
+		String updatedText = value.toLowerCase().replaceAll("[^a-zA-Z0-9]","");
+	     char[] charArr = updatedText.toCharArray();
+	        StringBuilder sb = new StringBuilder();
+	        for(int i=charArr.length-1;i>=0;i--){
+	            sb.append(charArr[i]);
+	        }
+	        System.out.println("reverse: "+sb.toString());
+	        return updatedText.equals(sb.toString());
+
 		
-		return IntStream.range(0, value.length()/2).allMatch(i->value.charAt(i)==value.charAt(value.length()-1-i));
+		//return IntStream.range(0, value.length()/2).allMatch(i->value.charAt(i)==value.charAt(value.length()-1-i));
 	}
 	
 	public String latestSwitch() {
@@ -378,7 +387,7 @@ if(nums.length == 0 || nums.length == 1)
 public int[] plusOne(int[] digits) {
     int len = digits.length;   
      if(digits[len-1] <9) {
-         digits[len-1] = digits[len-1]+1;  
+         digits[len-1]++; 
          return digits;
      } else {
          StringBuilder strValue = new StringBuilder();
@@ -423,7 +432,7 @@ public static void main(String[] args) {
 	//Scanner scanner = new Scanner(System.in).useDelimiter("\n");
 	//String text =scanner.next();
 	//scanner.close();
-//	System.out.println(codePractice.palindrome(text));
+    System.out.println(codePractice.palindrome("A man, a plan, a canal: Panama"));
 	//codePractice.findVowelsConsonantCounter(text);
 
 	codePractice.swapElemInArray();
