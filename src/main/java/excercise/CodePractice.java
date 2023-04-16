@@ -75,9 +75,11 @@ public class CodePractice {
 	
 	
 	public  void streamForFilterAny(){
-		List<Person> personList = Arrays.asList(new Person("Tom",30),new Person("Carl",20),new Person("mans",33));
-		Person p =  personList.stream().filter(person->"tom".equalsIgnoreCase(person.getName()) && 30 ==person.getAge()).findAny().orElse(null);
+		List<Person> personList = Arrays.asList(new Person("Tom",30, new Address("perina", null,"nsw")),new Person("Carl",20,new Address("perina", "bangor","nsw")),new Person("mans",33,new Address("perina", "bangor","nsw")));
+		Person p =  personList.stream().filter(person->"tom".equalsIgnoreCase(person.name()) && 30 ==person.age()).findAny().orElse(null);
 		System.out.println(p);
+		Person person = new Person("Tom",30, new Address("perina", null,"nsw"));
+		System.out.println("Testing java NPE: " + person.address().area().toLowerCase());
 	}
 	// 1,2,3,4,5 => 5 
 	public int[] sumoftwo(int[] arr, int target) {
@@ -415,7 +417,7 @@ public static void main(String[] args) {
 //	System.out.println(codePractice.duplicateWords2("the dog is the the dog dog"));
 //	System.out.println(codePractice.findRepeatedChars("lalllaaaaa"));
 //	System.out.println(codePractice.streamProgram());
-//	codePractice.streamForFilterAny();
+  //codePractice.streamForFilterAny();
 //	System.out.println(codePractice.printFibNumbers(5));
 //	System.out.println(codePractice.latestSwitch());
 //	codePractice.replaceMultipleSpaceWIthsingle();
