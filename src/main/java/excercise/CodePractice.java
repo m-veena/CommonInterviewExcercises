@@ -5,6 +5,11 @@ import java.math.BigInteger;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.ZoneId;
+import java.time.temporal.ChronoUnit;
 import java.util.*;
 import java.util.Map.Entry;
 import java.util.regex.Matcher;
@@ -411,6 +416,47 @@ public int[] plusOne(int[] digits) {
      }
  }
 
+public int maxSubArray(int[] nums) {
+    int len = nums.length;
+    if(len == 1){
+        return nums[0];
+    }
+    
+    int sum = 0;
+    for(int i =0;i<len;i++) {
+       sum += nums[i];        
+    }
+    System.out.println("Sum value = "+sum);
+    
+    int[] subArray = new int[len];
+    int subArrIndex = 0;
+    boolean startingIndex = true;
+    boolean endingIndex = true;
+    //[-2,1,-3,4,-1,2,1,-5,4]
+    //[4,-1,2,1]
+    for(int i =0, j=len-1;i<len;i++,j--) {
+        if((sum - nums[i]) >=sum && startingIndex) {
+          subArray[subArrIndex] = i; 
+            subArrIndex++;    
+            System.out.println("i: "+subArray[subArrIndex]);
+        } else{
+            startingIndex = false;
+        }
+        if((sum - nums[j]) >=sum && endingIndex) {
+           subArray[subArrIndex] = j;  
+            subArrIndex++;
+            System.out.println("j: "+subArray[subArrIndex]);
+        } else {
+           endingIndex = false; 
+        }
+    }
+    for(int k =0;k<subArrIndex;k++) {
+       sum = sum-nums[subArray[k]];
+       System.out.println("k: "+nums[subArray[k]]);
+    }
+    return sum;
+}
+
 
 public static void main(String[] args) {
 	CodePractice codePractice = new CodePractice();
@@ -443,7 +489,8 @@ public static void main(String[] args) {
 	int[] expectedNums = codePractice.removeDuplicates(nums);
 	System.out.println("Array: "+Arrays.toString(expectedNums));
 	System.out.println(Arrays.toString(codePractice.plusOne(new int[] {5,6,2,0,0,4,6,2,4,9})));
-
+    System.out.println("Largest subarray sum problem:  "+codePractice.maxSubArray(new int[] {-2,1,-3,4,-1,2,1,-5,4}));
+    
 	}
 
 
